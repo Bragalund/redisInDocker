@@ -20,12 +20,7 @@ To create VM and run main.yml in root folder:
 vagrant up;
 ```
 
-To stop VM:
-```()
-vagrant halt;
-```
-
 To remove VM:
 ```()
-vagrant destroy;
+vagrant destroy -f;
 ```

@@ -1,5 +1,5 @@
 ---
-- hosts: localhost
+- hosts: all
   become: yes
   
   tasks:
@@ -9,3 +9,7 @@
       name: docker
       state: present
 
+  - name: Ensure docker-service is started
+    service: 
+      name: docker 
+      state: restarted

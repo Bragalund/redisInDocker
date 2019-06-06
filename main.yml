@@ -1,15 +1,8 @@
 ---
-- hosts: localhost
+- hosts: all
 
 - import_playbook: roles/install-docker-apt-playbook.yml
   when: ansible_facts['os_family'] == "Debian"
 
 - import_playbook: roles/install-docker-zypper-playbook.yml
   when: ansible_facts['os_family'] == "Suse"
-
-  tasks:
-
-  - name: Ensure docker-service is started
-    service: 
-      name: docker 
-      state: restarted

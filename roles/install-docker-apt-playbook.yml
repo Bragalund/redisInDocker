@@ -1,5 +1,5 @@
 ---
-- hosts: localhost
+- hosts: all
   become: yes
 #  vars:
 
@@ -32,7 +32,8 @@
   - name: ensure docker and dependencies are installed
     apt: name=docker-engine update_cache=yes
 
-
-
-
+  - name: Ensure docker-service is started
+    service: 
+      name: docker 
+      state: restarted
   
