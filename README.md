@@ -1,8 +1,12 @@
 # RedisInDocker
 
-Script for installing a qiuck redis-instance, running in docker.
-Works for Suse and Debian, but might also work for others.
+Script for installing docker and running a redis-container.
+
+Run on a Suse or Debian server.
 
 ## To run
 
-Run the [runMe-script](runMe.sh) from the root folder.
+```()
+chmod +x runMe.sh;
+./runMe.sh;
+```
