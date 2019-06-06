@@ -13,6 +13,8 @@ chmod +x runMe.sh;
 
 ### To run tests
 
+You need to [install vagrant](https://github.com/Bragalund/bjellekua/blob/dev/installVagrantWithAptOnUbuntu18.04.sh).
+
 To create VM and run main.yml in root folder:
 ```()
 vagrant up;
