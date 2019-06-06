@@ -6,11 +6,11 @@
   
   tasks:
 
-#  - name: ensure repository key is installed
-#    apt_key:
-#      id: "58118E89F3A912897C070ADBF76221572C52609D"
-#      keyserver: "hkp://p80.pool.sks-keyservers.net:80"
-#      state: present
+  - name: ensure repository key is installed
+    apt_key:
+      id: "58118E89F3A912897C070ADBF76221572C52609D"
+      keyserver: "hkp://p80.pool.sks-keyservers.net:80"
+      state: present
 
 # add APT repository
 
@@ -23,14 +23,19 @@
     when: ( ansible_facts['distribution_major_version'] == "16.04")
 
   - name: add docker repository for ubuntu 18.04 LTS
-    apt_repository: repo='deb https://apt.dockerproject.org/repo ubuntu-bionic main' state=present
-    when: ( ansible_facts['distribution_major_version'] == "18.04")
+    apt_repository: repo='deb https://apt.dockerproject.org/repo stable main' state=present
+   # when: ( ansible_facts['distribution_major_version'] == "18.04")
 
+  - name: update
+    apt_repository:
+      update_cache: yes
 
-# Install docker with APT
+# Install docker with default package manager for OS
 
   - name: ensure docker and dependencies are installed
-    apt: name=docker-engine update_cache=yes
+    apt:
+      name: docker-engine
+      state: present
 
   - name: Ensure docker-service is started
     service: 
