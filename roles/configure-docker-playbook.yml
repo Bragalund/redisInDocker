@@ -3,4 +3,5 @@
 
   tasks:
 
-  - service: name=docker state=restarted
+  - name: Ensure docker-service is started
+    service: name=docker state=restarted
