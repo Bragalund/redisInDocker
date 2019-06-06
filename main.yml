@@ -7,4 +7,11 @@
 - import_playbook: roles/install-docker-zypper-playbook.yml
   when: ansible_facts['os_family'] == "Suse"
 
-- import_playbook: configure-docker-playbook.yml
+# - import_playbook: configure-docker-playbook.yml
+
+  tasks:
+
+  - name: Ensure docker-service is started
+    service: 
+      name: docker 
+      state: restarted
