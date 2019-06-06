@@ -1,0 +1,5 @@
+---
+
+  tasks:
+
+  - service: name=docker state=restarted

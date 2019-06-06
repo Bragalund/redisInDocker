@@ -1,0 +1,39 @@
+---
+- hosts: localhost
+  become: yes
+  when: ansible_facts['os_family'] == "Debian"
+#  vars:
+
+  
+  tasks:
+
+#  - name: ensure repository key is installed
+#    apt_key:
+#      id: "58118E89F3A912897C070ADBF76221572C52609D"
+#      keyserver: "hkp://p80.pool.sks-keyservers.net:80"
+#      state: present
+
+# add APT repository
+
+  - name: add docker repository to ubuntu 14.04 LTS
+    apt_repository: repo='deb https://apt.dockerproject.org/repo ubuntu-trusty main' state=present
+    when: ( ansible_facts['distribution_major_version'] == "14.04")
+
+  - name: add docker repository for ubuntu 16.04 LTS
+    apt_repository: repo='deb https://apt.dockerproject.org/repo ubuntu-xenial main' state=present
+    when: ( ansible_facts['distribution_major_version'] == "16.04")
+
+  - name: add docker repository for ubuntu 18.04 LTS
+    apt_repository: repo='deb https://apt.dockerproject.org/repo ubuntu-bionic main' state=present
+    when: ( ansible_facts['distribution_major_version'] == "18.04")
+
+
+# Install docker with APT
+
+  - name: ensure docker and dependencies are installed
+    apt: name=docker-engine update_cache=yes
+
+
+
+
+  

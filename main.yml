@@ -1,0 +1,10 @@
+---
+- hosts: localhost
+
+- import_playbook: roles/install-docker-apt-playbook.yml
+  when: ansible_facts['os_family'] == "Debian"
+
+- import_playbook: roles/install-docker-zypper-playbook.yml
+  when: ansible_facts['os_family'] == "Suse"
+
+- import_playbook: configure-docker-playbook.yml

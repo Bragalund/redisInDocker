@@ -1,0 +1,12 @@
+---
+- hosts: localhost
+  become: yes
+  when: ansible_facts['os_family'] == "Suse"
+  
+  tasks:
+  
+  - name: install docker with zypper
+    zypper:
+      name: docker
+      state: present
+
