@@ -10,3 +10,9 @@ Run on a Suse or Debian server.
 chmod +x runMe.sh;
 ./runMe.sh;
 ```
+
+## To run tests
+
+```()
+vagrant up;
+```
