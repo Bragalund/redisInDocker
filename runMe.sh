@@ -14,11 +14,11 @@ fi
 # install docker with ansible
 ansible-playbook main.yml --ask-become-pass;
 
-# Set up a docker volume
-docker volume create --name redis-docker-volume;
-
 # Pull redis image
 docker pull redis;
+
+# Set up a docker volume
+docker volume create --name redis-docker-volume;
 
 # Run redis image and assign volume
 docker run -p 6379:6379 -d -v redis-docker-volume --name redis-docker-instance redis; 
