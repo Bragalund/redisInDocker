@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# install ansible
+# install ansible if not already installed...
 if hash ansible 2>/dev/null; then
     echo 'Ansible is already installed...';
 elif [[uname -a | grep -i ubuntu] -eq 0]; then
@@ -14,7 +14,7 @@ fi
 # install docker with ansible
 ansible-playbook main.yml --ask-become-pass;
 
-# Set up docker volumes
+# Set up a docker volume
 docker volume create --name redis-docker-volume;
 
 # Pull redis image
